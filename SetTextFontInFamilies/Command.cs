@@ -166,18 +166,35 @@ namespace SetTextFontInFamilies
 
         bool updatedFamily = false;
 
-        try
+        // Using exception handler.
+
+        //try
+        //{
+        //  r1.FamilyDocument
+        //    = famdoc
+        //    = doc.EditFamily( f );
+        //}
+        //catch( Autodesk.Revit.Exceptions.ArgumentException ex )
+        //{
+        //  r1.Skipped = true;
+        //  results.Add( r1 );
+        //  Debug.Print( "Family '{0}': {1}", f.Name, ex.Message );
+        //  continue;
+        //}
+
+        // Better: test IsEditable predicate.
+
+        if( f.IsEditable )
         {
           r1.FamilyDocument
             = famdoc
             = doc.EditFamily( f );
-
         }
-        catch( Autodesk.Revit.Exceptions.ArgumentException ex )
+        else
         {
           r1.Skipped = true;
           results.Add( r1 );
-          Debug.Print( "Family '{0}': {1}", f.Name, ex.Message );
+          Debug.Print( "Family '{0}' is not editable", f.Name );
           continue;
         }
 
