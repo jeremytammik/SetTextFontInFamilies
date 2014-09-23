@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>SetTextFontInFamilies</Text>
+    <Description>Set text font in all loaded families</Description>
+    <Assembly>SetTextFontInFamilies.dll</Assembly>
+    <FullClassName>SetTextFontInFamilies.Command</FullClassName>
+    <ClientId>afa0cf27-d95e-4d7f-92ae-be7296ab309c</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
