@@ -292,5 +292,53 @@ namespace SetTextFontInFamilies
 
       return Result.Succeeded;
     }
+
+    #region Original sample code
+    public Result Execute_Original(
+      ExternalCommandData commandData,
+      ref string message,
+      ElementSet elements )
+    {
+      Document doc = commandData.Application
+        .ActiveUIDocument.Document;
+
+      FilteredElementCollector collectorUsed
+        = new FilteredElementCollector( doc );
+
+      collectorUsed.OfClass( typeof( Family ) );
+
+      foreach( Family f in collectorUsed )
+      {
+        string name = f.Name;
+        Document famdoc = doc.EditFamily( f );
+
+        FilteredElementCollector famcollectorUsed
+          = new FilteredElementCollector( famdoc );
+
+        ICollection<ElementId> textNoteTypes
+          = famcollectorUsed.OfClass( typeof( TextNoteType ) )
+            .ToElementIds();
+
+        foreach( ElementId textNoteTypeId in textNoteTypes )
+        {
+          Element ele = doc.GetElement( textNoteTypeId );
+          foreach( Parameter p in ele.Parameters )
+          {
+            if( p.Definition.Name == "Text Font" )
+            {
+              using( Transaction tranew
+                = new Transaction( doc ) )
+              {
+                tranew.Start( "Update" );
+                p.Set( "Arial Black" );
+                tranew.Commit();
+              }
+            }
+          }
+        }
+      }
+      return Result.Succeeded;
+    }
+    #endregion // Original sample code
   }
 }

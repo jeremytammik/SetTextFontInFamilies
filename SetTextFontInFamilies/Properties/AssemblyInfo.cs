@@ -36,6 +36,7 @@ using System.Runtime.InteropServices;
 // History:
 // 2015.0.0.0 2014-09-22 initial implementation
 // 2015.0.0.1 2014-09-23 check Family.IsEditable instead of catching ArgumentException
+// 2015.0.0.2 2014-09-24 published version
 //
-[assembly: AssemblyVersion( "2015.0.0.0" )]
-[assembly: AssemblyFileVersion( "2015.0.0.1" )]
+[assembly: AssemblyVersion( "2015.0.0.2" )]
+[assembly: AssemblyFileVersion( "2015.0.0.2" )]
